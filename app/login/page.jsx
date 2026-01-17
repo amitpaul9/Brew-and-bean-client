@@ -1,6 +1,27 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+
 const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const router = useRouter();
+    const [error, setError] = useState("")
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (email === "atamit905@gmail.com" && password === "Aaaaaa") {
+            document.cookie = "auth=true ; path=/"
+            router.push("/items")
+        }
+        else {
+            setError("wrong credencial")
+        }
+    }
+
     return (
         <main className="min-h-screen flex items-center justify-center bg-[#fdf6f0] px-6">
             <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
@@ -13,7 +34,7 @@ const Login = () => {
                 </p>
 
                 {/* Form */}
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     <div>
                         <label
                             htmlFor="email"
@@ -27,6 +48,9 @@ const Login = () => {
                             placeholder="you@example.com"
                             className="w-full px-4 py-2 border border-[#d9cfc7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3e1f1f]"
                             required
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -43,9 +67,13 @@ const Login = () => {
                             placeholder="••••••••"
                             className="w-full px-4 py-2 border border-[#d9cfc7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3e1f1f]"
                             required
-                        />
+                            name="password"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
+                             />
                     </div>
 
+                    {error && (<p className="text-red text-center">{error}</p>)}
                     {/* Submit Button */}
                     <button
                         type="submit"

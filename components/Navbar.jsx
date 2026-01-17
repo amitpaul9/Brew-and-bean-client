@@ -4,15 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Coffee } from "lucide-react";
 
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
 
     const items = [
         { id: 1, name: "Menu", url: "/items" },
         { id: 2, name: "About Us", url: "/about" },
-        { id: 3, name: "Login", url: "/login" }
-
-    ]
+    ];
 
     return (
         <nav className="bg-background text-foreground py-6 px-4 md:px-12 sticky top-0 z-50">
@@ -34,6 +34,14 @@ const Navbar = () => {
                             {item.name}
                         </Link>
                     ))}
+
+                    <Link
+                        href="/login"
+                        className="hover:text-accent transition-colors duration-200"
+                    >
+                        Login
+                    </Link>
+
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -60,6 +68,25 @@ const Navbar = () => {
                                 {item.name}
                             </Link>
                         ))}
+                        {user ? (
+                            <button
+                                onClick={() => {
+                                    logout();
+                                    setIsOpen(false);
+                                }}
+                                className="hover:text-accent transition-colors duration-200 py-2 w-full text-center"
+                            >
+                                Logout
+                            </button>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="hover:text-accent transition-colors duration-200 py-2 w-full text-center"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Login
+                            </Link>
+                        )}
                     </div>
                 </div>
             )}
