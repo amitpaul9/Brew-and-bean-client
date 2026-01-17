@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Hero = () => {
     return (
@@ -27,9 +28,9 @@ const Hero = () => {
                                 Cozy Moments.<br />
                                 Welcome to Brew & Bean.
                             </h1>
-                            <button className="bg-stone-50 text-stone-900 hover:bg-stone-700 hover:text-white cursor-pointer px-6 py-3 rounded transition-colors">
+                            <Link href="/items" className="bg-stone-50 text-stone-900 hover:bg-stone-700 hover:text-white cursor-pointer px-6 py-3 rounded transition-colors">
                                 Explore Our Menu
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

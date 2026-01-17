@@ -10,6 +10,7 @@ const Cafe = () => {
                         priority
                         height={400}
                         width={400}
+                        quality={90}
                         src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&h=600&fit=crop"
                         alt="Cafe Interior"
                         className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover rounded-lg"

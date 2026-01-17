@@ -10,9 +10,10 @@ const About = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="order-2 lg:order-1">
                             <Image
+                                id='about-img-1'
                                 height={400}
                                 width={400}
-                                src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&h=700&fit=crop"
+                                src="https://images.unsplash.com/photo-1591654724197-7f62614c4a63?q=80&w=1008&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 alt="Coffee Shop Atmosphere"
                                 className="w-full object-cover rounded-lg shadow-lg"
                             />

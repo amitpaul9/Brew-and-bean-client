@@ -1,27 +1,33 @@
+"use client"
+
 import Image from 'next/image';
-import React from 'react';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 const Menu = () => {
-    const menuItems = [
-        {
-            image: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&h=300&fit=crop",
-            title: "Seasonal Latte",
-            description: "Pumpkin spice & caramel.",
-            price: "$5.50"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop",
-            title: "Artisan Croissant",
-            description: "Flaky & buttery.",
-            price: "$4.00"
-        },
-        {
-            image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop",
-            title: "Pour Over",
-            description: "Single origin, rotating.",
-            price: "$5.00"
-        }
-    ];
+    const [menuItems, setMenuItems] = useState([]);
+
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/home-items');
+
+                if (!response.ok) {
+                    throw new Error("Could not find public/data/items.json");
+                }
+
+                const data = await response.json();
+                setMenuItems(data);
+            } catch (error) {
+                console.error("Error loading items:", error);
+            }
+        };
+
+        fetchItems();
+    }, []);
+
+
     return (
         <div>
             <section className="py-12 bg-stone-50">
@@ -46,9 +52,9 @@ const Menu = () => {
                         ))}
                     </div>
                     <div className="mt-5 text-right ">
-                        <button className="bg-stone-900 cursor-pointer text-white px-8 py-3 rounded hover:bg-stone-700 transition-colors font-medium shadow-sm">
+                        <Link href="/items" className="bg-stone-900 cursor-pointer text-white px-8 py-3 rounded hover:bg-stone-700 transition-colors font-medium shadow-sm">
                             See All Items
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </section>
