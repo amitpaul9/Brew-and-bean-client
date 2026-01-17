@@ -10,7 +10,7 @@ const ItemList = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/items');
+                const response = await fetch('/api/items');
 
                 if (!response.ok) {
                     throw new Error("Could not find public/data/items.json");

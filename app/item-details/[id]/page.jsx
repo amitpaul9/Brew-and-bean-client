@@ -15,7 +15,7 @@ export default function ItemDetailsPage() {
         async function fetchItem() {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/items/${id}`
+                    `/api/items/${id}`
                 );
                 const data = await res.json();
                 setItem(data);

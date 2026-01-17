@@ -1,13 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Coffee } from "lucide-react";
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    useEffect(() => {
+        // Check for auth cookie
+        const checkAuth = () => {
+            const auth = document.cookie.split('; ').find(row => row.startsWith('auth='));
+            if (auth && auth.split('=')[1] === 'true') {
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
+            }
+        };
+        checkAuth();
+    }, []);
+
+    const logout = () => {
+        document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        setIsLoggedIn(false);
+        window.location.href = "/";
+    };
 
     const items = [
         { id: 1, name: "Menu", url: "/items" },
@@ -35,13 +54,21 @@ const Navbar = () => {
                         </Link>
                     ))}
 
-                    <Link
-                        href="/login"
-                        className="hover:text-accent transition-colors duration-200"
-                    >
-                        Login
-                    </Link>
-
+                    {isLoggedIn ? (
+                        <button
+                            onClick={logout}
+                            className="hover:text-accent transition-colors duration-200"
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <Link
+                            href="/login"
+                            className="hover:text-accent transition-colors duration-200"
+                        >
+                            Login
+                        </Link>
+                    )}
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -68,7 +95,8 @@ const Navbar = () => {
                                 {item.name}
                             </Link>
                         ))}
-                        {user ? (
+
+                        {isLoggedIn ? (
                             <button
                                 onClick={() => {
                                     logout();

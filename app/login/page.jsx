@@ -69,8 +69,8 @@ const Login = () => {
                             required
                             name="password"
                             value={password}
-                            onChange={(e)=>setPassword(e.target.value)}
-                             />
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
 
                     {error && (<p className="text-red text-center">{error}</p>)}

@@ -11,14 +11,14 @@ const Menu = () => {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-                const response = await fetch('http://localhost:5000/home-items');
+                const response = await fetch('/api/items');
 
                 if (!response.ok) {
-                    throw new Error("Could not find public/data/items.json");
+                    throw new Error("Could not fetch items");
                 }
 
                 const data = await response.json();
-                setMenuItems(data);
+                setMenuItems(data.slice(0, 3));
             } catch (error) {
                 console.error("Error loading items:", error);
             }
