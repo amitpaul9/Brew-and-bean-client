@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Brew and Bean ☕
 
-## Getting Started
+**Brew and Bean** is a modern, responsive web application designed for a premium coffee shop experience. It allows users to explore a carefully curated menu of coffee blends and delights, view detailed item information, and learn more about the coffee house's offerings and locations. Built with Next.js, it features dynamic routing, internal API handling, and a polished user interface.
 
-First, run the development server:
+## 🚀 Deployment
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Live Demo:** [https://brew-and-bean-sooty.vercel.app/](https://brew-and-bean-sooty.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Setup & Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Follow these steps to get the project running locally:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/amitpaul9/Brew-and-bean-client.git
+    cd brew-and-bean
+    ```
 
-## Learn More
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4.  **Open the application:**
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📍 Route Summary
 
-## Deploy on Vercel
+The application is structured with the following key routes:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Route | Description |
+| :--- | :--- |
+| `/` | **Homepage**: Features Hero, Menu preview, Cafe info, About section, Reviews, Location, and Newsletter. |
+| `/items` | **Menu Page**: A full grid listing of all available coffee items with images and prices. |
+| `/item-details/[id]` | **Item Details**: A dynamic page displaying detailed descriptions and info for a specific item. |
+| `/about` | **About Us**: Information about the brand and story. |
+| `/login` | **Login**: User authentication page. |
+| `/api/items` | **API List**: Endpoint returning the full JSON list of menu items. |
+| `/api/items/[id]` | **API Detail**: Endpoint returning data for a specific item by ID. |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Implemented Features
+
+-   **Dynamic Menu System**: Fetches and displays real-time menu data from internal API routes.
+-   **Product Details View**: Dynamic routing allows users to click on any item to view an in-depth description and dedicated page.
+-   **Responsive Navigation**: A fully responsive Navbar that adapts to mobile devices with a hamburger menu and smooth animations.
+-   **Authentication State**: Logic to handle user login sessions using cookies, toggling access between "Login" and "Logout" states.
+-   **Modern UI/UX**: Designed with **Tailwind CSS** and **Lucide React** icons to provide a clean, aesthetic, and user-friendly interface.
+-   **Component-Based Architecture**: Modular design with reusable components for Hero, Navbar, Footer, and content sections.
+
+## 📝 Brief Feature Explanation
+
+-   **Menu & API**: The `/items` page fetches data asynchronously from `/api/items`. This separates the frontend view from the data source, allowing for easier updates to the menu content.
+-   **Dynamic Routing**: The `/item-details/[id]` route utilizes Next.js dynamic path segments. When a user selects a coffee, the app identifies the ID and fetches the specific details for that item, ensuring a fast and seamless browsing experience.
+-   **Authentication**: The `Navbar` component checks for an `auth` cookie on mount. If present, it updates the UI to show a "Logout" button; otherwise, it presents a "Login" option, simulating a persistent user session.
